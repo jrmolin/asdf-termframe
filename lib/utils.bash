@@ -40,7 +40,7 @@ download_release() {
 	local version filename url
 	version="$1"
 	filename="$2"
-	extra="$3"
+	extra=""
 
 	# TODO: Adapt the release URL convention for termframe
 	case $(uname -m) in
