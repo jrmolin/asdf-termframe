@@ -26,7 +26,7 @@ sort_versions() {
 
 list_github_tags() {
 	git ls-remote --tags --refs "$GH_REPO" |
-		grep -o 'refs/tags/.*' | cut -d/ -f3- |
+		grep -o 'refs/tags/.*' | grep -v latest | cut -d/ -f3- |
 		sed 's/^v//' # NOTE: You might want to adapt this sed to remove non-version strings from tags
 }
 
@@ -47,6 +47,8 @@ download_release() {
 			arch=arm64
 			;;
 		x86_64)
+			arch=arm64
+			;;
 		amd64)
 			arch=x86_64
 			;;
